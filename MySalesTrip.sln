@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySalesTrip.Data", "MySalesTrip.Data\MySalesTrip.Data.csproj", "{21E522F0-0D2C-451F-8E4C-32585726AF71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySalesApp.Data", "MySalesApp.Data\MySalesApp.Data.csproj", "{60AD091C-518C-4513-A7E3-2D76B71190FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySalesApp.Data.Dal", "MySalesApp.Data.Dal\MySalesApp.Data.Dal.csproj", "{4C59ABEA-A102-48AD-83C2-B74DDC384553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySalesApp.Business", "MySalesApp.Business\MySalesApp.Business.csproj", "{24AE845F-2F8D-4A8D-AC7D-233932185337}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySalesApp.Service", "MySalesApp.Service\MySalesApp.Service.csproj", "{8736F949-A8B8-45CA-A4E0-37E60ED0A248}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySalesTrip.Presentation.Wpf", "MySalesTrip.Presentation.Wpf\MySalesTrip.Presentation.Wpf.csproj", "{FA47117F-9D01-49F2-9A74-DF918591C619}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21E522F0-0D2C-451F-8E4C-32585726AF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21E522F0-0D2C-451F-8E4C-32585726AF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21E522F0-0D2C-451F-8E4C-32585726AF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21E522F0-0D2C-451F-8E4C-32585726AF71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60AD091C-518C-4513-A7E3-2D76B71190FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60AD091C-518C-4513-A7E3-2D76B71190FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60AD091C-518C-4513-A7E3-2D76B71190FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60AD091C-518C-4513-A7E3-2D76B71190FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C59ABEA-A102-48AD-83C2-B74DDC384553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C59ABEA-A102-48AD-83C2-B74DDC384553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C59ABEA-A102-48AD-83C2-B74DDC384553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C59ABEA-A102-48AD-83C2-B74DDC384553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24AE845F-2F8D-4A8D-AC7D-233932185337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24AE845F-2F8D-4A8D-AC7D-233932185337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24AE845F-2F8D-4A8D-AC7D-233932185337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24AE845F-2F8D-4A8D-AC7D-233932185337}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8736F949-A8B8-45CA-A4E0-37E60ED0A248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8736F949-A8B8-45CA-A4E0-37E60ED0A248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8736F949-A8B8-45CA-A4E0-37E60ED0A248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8736F949-A8B8-45CA-A4E0-37E60ED0A248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA47117F-9D01-49F2-9A74-DF918591C619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA47117F-9D01-49F2-9A74-DF918591C619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA47117F-9D01-49F2-9A74-DF918591C619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA47117F-9D01-49F2-9A74-DF918591C619}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
