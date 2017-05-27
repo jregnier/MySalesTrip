@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Customer\Address.cs" />
+    <Compile Include="Models\Customer\Contact.cs" />
     <Compile Include="Models\Customer\CustomerEdit.cs" />
     <Compile Include="Models\Customer\CustomerEditValidator.cs" />
+    <Compile Include="Models\Customer\CustomerList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ModelValidationFactory.cs" />
     <Compile Include="ValidationModule.cs" />

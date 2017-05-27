@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerServices\CustomerEditService.cs" />
+    <Compile Include="CustomerServices\CustomerListService.cs" />
     <Compile Include="CustomerServices\ICustomerEditService.cs" />
+    <Compile Include="CustomerServices\ICustomerListService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceModule.cs" />
   </ItemGroup>

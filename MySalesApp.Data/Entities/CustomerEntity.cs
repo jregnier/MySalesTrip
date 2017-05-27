@@ -11,5 +11,7 @@ namespace MySalesApp.Data.Entities
         public string Name { get; set; }
 
         public List<AddressEntity> Addresses { get; set; }
+
+        public List<ContactEntity> Contacts { get; set; }
     }
 }
