@@ -1,0 +1,39 @@
+﻿using MahApps.Metro.Controls
+
+MetroWindow "MySalesTrip.Presentation.Wpf.MainWindow" {
+	Grid { 
+		RowDefinitions: [
+			RowDefinition { Height: "*" }
+			RowDefinition { Height: "Auto" }
+		]
+
+		MetroAnimatedTabControl { 
+			Name: "MainTabControl"
+			Grid.Row: 0
+			Margin: "10 20 10 0"
+			TabControlHelper.Underlined: "TabPanel"
+			ItemsSource: bind ContentItems
+			TabStripPlacement: Left
+			ItemTemplate: DataTemplate {
+				TextBlock { 
+					Text: bind Header
+					Margin: "0 3"
+					FontSize: 20					
+				}
+			}
+		}
+
+		StatusBar { 
+			Grid.Row: 1
+			StatusBarItem { "My Sales Trip Application" }
+			Separator { Style: resource "MetroStatusBarSeparator" }
+			StatusBarItem { 
+				Content: bind SelectedItem.Header
+					set [
+						ElementName: "MainTabControl"
+						Mode: OneWay
+					]
+			}
+		}
+	}
+}

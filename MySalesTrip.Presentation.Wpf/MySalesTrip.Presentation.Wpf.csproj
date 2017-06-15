@@ -36,11 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AmmySidekick, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7c1296d24569a67d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ammy.WPF.1.2.71\lib\net40\AmmySidekick.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.7.0.0\lib\net45\FluentValidation.dll</HintPath>
+      <HintPath>..\packages\FluentValidation.7.0.2\lib\net45\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
@@ -85,8 +88,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="MainWindow.ammy.cs">
+      <DependentUpon>MainWindow.ammy</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CustomersViewModel.cs" />
     <Compile Include="ViewModel\IMainView.cs" />
@@ -124,6 +127,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="lib.ammy" />
+    <None Include="MainWindow.ammy" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,9 +158,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="MainWindow.g.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>MainWindow.ammy</DependentUpon>
     </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -182,4 +188,11 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Ammy.1.2.71\build\Ammy.targets" Condition="Exists('..\packages\Ammy.1.2.71\build\Ammy.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Ammy.1.2.71\build\Ammy.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Ammy.1.2.71\build\Ammy.targets'))" />
+  </Target>
 </Project>
