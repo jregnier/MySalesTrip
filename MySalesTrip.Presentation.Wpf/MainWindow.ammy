@@ -1,6 +1,19 @@
 ﻿using MahApps.Metro.Controls
+using MySalesTrip.Presentation.Wpf.Views
+using MySalesTrip.Presentation.Wpf.ViewModel
 
 MetroWindow "MySalesTrip.Presentation.Wpf.MainWindow" {
+	Resources: ResourceDictionary{
+		DataTemplate { 
+			DataType: CustomersViewModel
+			CustomersView { Margin: 10 }
+		}
+		DataTemplate { 
+			DataType: TripsViewModel
+			TripsView { Margin: 10 }
+		}
+	}
+
 	Grid { 
 		RowDefinitions: [
 			RowDefinition { Height: "*" }
@@ -14,7 +27,7 @@ MetroWindow "MySalesTrip.Presentation.Wpf.MainWindow" {
 			TabControlHelper.Underlined: "TabPanel"
 			ItemsSource: bind ContentItems
 			TabStripPlacement: Left
-			ItemTemplate: DataTemplate {
+			ItemTemplate: DataTemplate {     
 				TextBlock { 
 					Text: bind Header
 					Margin: "0 3"

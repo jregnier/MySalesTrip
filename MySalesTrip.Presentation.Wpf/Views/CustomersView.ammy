@@ -1,0 +1,9 @@
+﻿UserControl "MySalesTrip.Presentation.Wpf.Views.CustomersView" {
+	Grid { 
+		TextBlock { 
+			HorizontalAlignment: Center
+			VerticalAlignment: Center
+			"This is the customers view"
+		}
+	}
+}

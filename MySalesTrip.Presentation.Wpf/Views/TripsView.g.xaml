@@ -1,0 +1,5 @@
+<UserControl x:Class="MySalesTrip.Presentation.Wpf.Views.TripsView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:AmmySidekick;assembly=AmmySidekick" ns0:Ammy.Register="/MySalesTrip.Presentation.Wpf;component/Views/TripsView.g.xaml">
+  <Grid>
+    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">This is the trips view</TextBlock>
+  </Grid>
+</UserControl>

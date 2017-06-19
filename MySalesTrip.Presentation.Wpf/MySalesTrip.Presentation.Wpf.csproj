@@ -102,11 +102,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\ViewModelModule.cs" />
-    <Compile Include="Views\CustomersView.xaml.cs">
-      <DependentUpon>CustomersView.xaml</DependentUpon>
+    <Compile Include="Views\CustomersView.ammy.cs">
+      <DependentUpon>CustomersView.ammy</DependentUpon>
     </Compile>
-    <Compile Include="Views\TripsView.xaml.cs">
-      <DependentUpon>TripsView.xaml</DependentUpon>
+    <Compile Include="Views\TripsView.ammy.cs">
+      <DependentUpon>TripsView.ammy</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +134,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Views\CustomersView.ammy" />
+    <None Include="Views\TripsView.ammy" />
     <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -171,13 +173,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\CustomersView.xaml">
+    <Page Include="Views\CustomersView.g.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>CustomersView.ammy</DependentUpon>
     </Page>
-    <Page Include="Views\TripsView.xaml">
+    <Page Include="Views\TripsView.g.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>TripsView.ammy</DependentUpon>
     </Page>
   </ItemGroup>
   <ItemGroup />
