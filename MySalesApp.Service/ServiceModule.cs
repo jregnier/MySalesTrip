@@ -8,6 +8,7 @@ namespace MySalesApp.Service
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<CustomerEditService>().As<ICustomerEditService>();
+            builder.RegisterType<CustomerListService>().As<ICustomerListService>();
         }
     }
 }

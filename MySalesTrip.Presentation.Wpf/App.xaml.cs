@@ -32,8 +32,7 @@ namespace MySalesTrip.Presentation.Wpf
             using (var scope = Container.BeginLifetimeScope())
             {
                 var mainWindowViewModel = Container.ResolveOptional<IMainView>();
-                //MainWindow window = new MainWindow();
-                //window.DataContext = mainWindowViewModel;
+
                 MainWindow window = new Wpf.MainWindow()
                 {
                     DataContext = mainWindowViewModel

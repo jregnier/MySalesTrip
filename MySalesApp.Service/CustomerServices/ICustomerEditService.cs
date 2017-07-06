@@ -10,5 +10,7 @@ namespace MySalesApp.Service.CustomerServices
         Task EditAsync(CustomerEdit customer);
 
         Task<CustomerEdit> GetById(int id);
+
+        CustomerEdit New();
     }
 }

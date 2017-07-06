@@ -1,9 +1,69 @@
-﻿UserControl "MySalesTrip.Presentation.Wpf.Views.CustomersView" {
+﻿using MaterialDesignThemes.Wpf
+using MySalesTrip.Presentation.Wpf.Views
+using MySalesTrip.Presentation.Wpf.ViewModel
+
+UserControl "MySalesTrip.Presentation.Wpf.Views.CustomersView" {
+	Resources: ResourceDictionary{
+		DataTemplate { 
+			DataType: CustomerViewModel
+			CustomerView { Margin: 10 }
+		}
+	}
 	Grid { 
-		TextBlock { 
-			HorizontalAlignment: Center
-			VerticalAlignment: Center
-			"This is the customers view"
+		#ThreeColumns("1*", "5", "1*")
+
+		Grid { 
+			MinWidth: 200
+			Margin: 10
+			Grid.Column: 0
+			ListView { 
+				Grid.Row: 1
+				View: GridView { 
+					GridViewColumn { 
+						Header: "Name" 
+						Width: 200 
+						DisplayMemberBinding: bind Name
+					}
+					GridViewColumn { 
+						Header: "Address" 
+						Width: "Auto"
+						DisplayMemberBinding: bind Address
+					}
+				}
+			}
+			PopupBox { 
+				Style: resource "MaterialDesignMultiFloatingActionAccentPopupBox"
+				PlacementMode: TopAndAlignCentres
+				HorizontalAlignment: Right
+				VerticalAlignment: Bottom
+				Margin: "0 0 20 20"
+				ToolTipService.Placement: "Right"
+				ToolTip: "Manage Customers"
+				StackPanel { 
+					Orientation: Vertical
+					Button {
+						ToolTip: "Add new customer"
+						Command: bind AddNewCustomerCommand
+						PackIcon { Kind: "AccountPlus" }
+					}
+					Button {
+						ToolTip: "Delete selected customer"
+						Command: bind DeleteCustomerCommand
+						PackIcon { Kind: "AccountRemove" }
+					}
+				}
+			}
+		}
+
+		GridSplitter { 
+			Grid.Column: 1 
+			HorizontalAlignment: Stretch
+		}
+
+		ContentControl { 
+			Grid.Column: 2
+			Margin: 10
+			Content: bind SelectedCustomer
 		}
 	}
 }

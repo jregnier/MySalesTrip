@@ -1,6 +1,11 @@
-<ns1:MetroWindow x:Class="MySalesTrip.Presentation.Wpf.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:MySalesTrip.Presentation.Wpf.ViewModel" xmlns:ns1="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:ns2="clr-namespace:MySalesTrip.Presentation.Wpf.Views" xmlns:ns3="clr-namespace:AmmySidekick;assembly=AmmySidekick" ns3:Ammy.Register="/MySalesTrip.Presentation.Wpf;component/MainWindow.g.xaml">
-  <ns1:MetroWindow.Resources>
+<Window x:Class="MySalesTrip.Presentation.Wpf.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:MySalesTrip.Presentation.Wpf.ViewModel" xmlns:ns1="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf" xmlns:ns2="clr-namespace:MySalesTrip.Presentation.Wpf.Views" xmlns:ns3="clr-namespace:AmmySidekick;assembly=AmmySidekick" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Background="{DynamicResource MaterialDesignPaper}" TextElement.FontWeight="Medium" TextElement.FontSize="14" FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" ns3:Ammy.Register="/MySalesTrip.Presentation.Wpf;component/MainWindow.g.xaml">
+  <Window.Resources>
     <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
       <DataTemplate DataType="{x:Type ns0:CustomersViewModel}">
         <ns2:CustomersView FrameworkElement.Margin="10"/>
       </DataTemplate>
@@ -8,34 +13,64 @@
         <ns2:TripsView FrameworkElement.Margin="10"/>
       </DataTemplate>
     </ResourceDictionary>
-  </ns1:MetroWindow.Resources>
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*"/>
-      <RowDefinition Height="Auto"/>
-    </Grid.RowDefinitions>
-    <ns1:MetroAnimatedTabControl Name="MainTabControl" Grid.Row="0" Margin="10 20 10 0" ns1:TabControlHelper.Underlined="TabPanel" TabStripPlacement="Left">
-      <ns1:MetroAnimatedTabControl.ItemsSource>
-        <Binding Path="ContentItems"/>
-      </ns1:MetroAnimatedTabControl.ItemsSource>
-      <ns1:MetroAnimatedTabControl.ItemTemplate>
-        <DataTemplate>
-          <TextBlock Margin="0 3" FontSize="20">
-            <TextBlock.Text>
-              <Binding Path="Header"/>
-            </TextBlock.Text>
-          </TextBlock>
-        </DataTemplate>
-      </ns1:MetroAnimatedTabControl.ItemTemplate>
-    </ns1:MetroAnimatedTabControl>
-    <StatusBar Grid.Row="1">
-      <StatusBarItem>My Sales Trip Application</StatusBarItem>
-      <Separator Style="{StaticResource MetroStatusBarSeparator}"/>
-      <StatusBarItem>
-        <StatusBarItem.Content>
-          <Binding Path="SelectedItem.Header" ElementName="MainTabControl" Mode="OneWay"/>
-        </StatusBarItem.Content>
-      </StatusBarItem>
-    </StatusBar>
-  </Grid>
-</ns1:MetroWindow>
+  </Window.Resources>
+  <ns1:DialogHost Identifier="RootDialog">
+    <ns1:DrawerHost>
+      <ns1:DrawerHost.IsLeftDrawerOpen>
+        <Binding Path="IsFlyoutOpen"/>
+      </ns1:DrawerHost.IsLeftDrawerOpen>
+      <ns1:DrawerHost.LeftDrawerContent>
+        <DockPanel MinWidth="250">
+          <ToggleButton DockPanel.Dock="Top" Style="{StaticResource MaterialDesignHamburgerToggleButton}" HorizontalAlignment="Right" Margin="15">
+            <ToggleButton.IsChecked>
+              <Binding Path="IsFlyoutOpen"/>
+            </ToggleButton.IsChecked>
+          </ToggleButton>
+          <ListBox Margin="0 15">
+            <ListBox.ItemsSource>
+              <Binding Path="ContentItems"/>
+            </ListBox.ItemsSource>
+            <ListBox.SelectedItem>
+              <Binding Path="SelectedContent"/>
+            </ListBox.SelectedItem>
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <TextBlock>
+                  <TextBlock.Text>
+                    <Binding Path="Header"/>
+                  </TextBlock.Text>
+                </TextBlock>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </DockPanel>
+      </ns1:DrawerHost.LeftDrawerContent>
+      <DockPanel>
+        <ns1:ColorZone Padding="16" ns1:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" DockPanel.Dock="Top">
+          <DockPanel>
+            <ToggleButton DockPanel.Dock="Left" Style="{StaticResource MaterialDesignHamburgerToggleButton}">
+              <ToggleButton.IsChecked>
+                <Binding Path="IsFlyoutOpen"/>
+              </ToggleButton.IsChecked>
+            </ToggleButton>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">My Sales Application</TextBlock>
+          </DockPanel>
+        </ns1:ColorZone>
+        <Grid>
+          <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="10">
+            <ContentControl>
+              <ContentControl.Content>
+                <Binding Path="SelectedContent"/>
+              </ContentControl.Content>
+            </ContentControl>
+          </ScrollViewer>
+          <ns1:Snackbar Name="MainSnackbar" Grid.Row="1" HorizontalAlignment="Stretch">
+            <ns1:Snackbar.MessageQueue>
+              <Binding Path="MessageQueue"/>
+            </ns1:Snackbar.MessageQueue>
+          </ns1:Snackbar>
+        </Grid>
+      </DockPanel>
+    </ns1:DrawerHost>
+  </ns1:DialogHost>
+</Window>

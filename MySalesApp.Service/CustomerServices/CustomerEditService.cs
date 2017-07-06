@@ -121,5 +121,10 @@ namespace MySalesApp.Service.CustomerServices
                     .ToList()
             };
         }
+
+        public CustomerEdit New()
+        {
+            return new CustomerEdit();
+        }
     }
 }

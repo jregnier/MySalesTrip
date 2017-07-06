@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using MaterialDesignThemes.Wpf;
 
 namespace MySalesTrip.Presentation.Wpf.ViewModel
 {
@@ -9,6 +10,8 @@ namespace MySalesTrip.Presentation.Wpf.ViewModel
             builder.RegisterType<MainViewModel>().As<IMainView>();
             builder.RegisterType<TripsViewModel>().As<ITabbedContent>();
             builder.RegisterType<CustomersViewModel>().As<ITabbedContent>();
+            builder.RegisterType<SnackbarMessageQueue>().As<ISnackbarMessageQueue>();
+            builder.RegisterType<CustomerViewModel>();
         }
     }
 }

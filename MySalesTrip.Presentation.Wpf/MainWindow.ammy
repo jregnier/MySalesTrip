@@ -1,9 +1,19 @@
-﻿using MahApps.Metro.Controls
-using MySalesTrip.Presentation.Wpf.Views
+﻿using MySalesTrip.Presentation.Wpf.Views
 using MySalesTrip.Presentation.Wpf.ViewModel
+using MaterialDesignThemes.Wpf
 
-MetroWindow "MySalesTrip.Presentation.Wpf.MainWindow" {
+Window "MySalesTrip.Presentation.Wpf.MainWindow" {
+	TextElement.Foreground: resource dyn "MaterialDesignBody"
+	Background: resource dyn "MaterialDesignPaper"
+	TextElement.FontWeight: "Medium"
+	TextElement.FontSize: "14"
+    FontFamily: "pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
 	Resources: ResourceDictionary{
+		MergedDictionaries: [
+			ResourceDictionary { Source: "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" }
+			ResourceDictionary { Source: "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" }
+			ResourceDictionary { Source: "pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" }
+		]
 		DataTemplate { 
 			DataType: CustomersViewModel
 			CustomersView { Margin: 10 }
@@ -14,38 +24,63 @@ MetroWindow "MySalesTrip.Presentation.Wpf.MainWindow" {
 		}
 	}
 
-	Grid { 
-		RowDefinitions: [
-			RowDefinition { Height: "*" }
-			RowDefinition { Height: "Auto" }
-		]
-
-		MetroAnimatedTabControl { 
-			Name: "MainTabControl"
-			Grid.Row: 0
-			Margin: "10 20 10 0"
-			TabControlHelper.Underlined: "TabPanel"
-			ItemsSource: bind ContentItems
-			TabStripPlacement: Left
-			ItemTemplate: DataTemplate {     
-				TextBlock { 
-					Text: bind Header
-					Margin: "0 3"
-					FontSize: 20					
+	DialogHost {  
+		Identifier: "RootDialog"
+		DrawerHost { 
+			IsLeftDrawerOpen: bind IsFlyoutOpen
+			LeftDrawerContent: DockPanel {
+				MinWidth: 250
+				ToggleButton { 
+					DockPanel.Dock: Top
+					Style: resource "MaterialDesignHamburgerToggleButton"
+					HorizontalAlignment: Right
+					Margin: 15
+					IsChecked: bind IsFlyoutOpen
+				}
+				ListBox { 
+					Margin: "0 15"
+					ItemsSource: bind ContentItems
+					SelectedItem: bind SelectedContent
+					ItemTemplate: DataTemplate {
+						TextBlock { Text: bind Header }
+					}
 				}
 			}
-		}
-
-		StatusBar { 
-			Grid.Row: 1
-			StatusBarItem { "My Sales Trip Application" }
-			Separator { Style: resource "MetroStatusBarSeparator" }
-			StatusBarItem { 
-				Content: bind SelectedItem.Header
-					set [
-						ElementName: "MainTabControl"
-						Mode: OneWay
-					]
+			DockPanel { 
+				ColorZone { 
+					Padding: 16
+					ShadowAssist.ShadowDepth: "Depth2"
+					Mode: PrimaryMid
+					DockPanel.Dock: Top
+					DockPanel { 
+						ToggleButton {
+							DockPanel.Dock: Left
+							Style: resource "MaterialDesignHamburgerToggleButton"
+							IsChecked: bind IsFlyoutOpen
+						}
+						TextBlock { 
+							HorizontalAlignment: Center
+							VerticalAlignment: Center
+							FontSize: 22
+							"My Sales Application"
+						}
+					}
+				}
+				Grid { 
+					ScrollViewer {
+						Grid.Row: "1"
+						HorizontalScrollBarVisibility: Auto
+						VerticalScrollBarVisibility: Auto
+						Padding: 10
+						ContentControl { Content: bind SelectedContent }
+					}
+					Snackbar {
+						Name: "MainSnackbar"
+						Grid.Row: "1"
+						HorizontalAlignment: Stretch
+						MessageQueue: bind MessageQueue
+					}
+				}
 			}
 		}
 	}
