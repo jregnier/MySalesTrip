@@ -1,2 +1,2 @@
 # MySalesTrip
-Small Windows application for managing a sales trip
+Demo application for showing how dependency injection could be used with Autofac
