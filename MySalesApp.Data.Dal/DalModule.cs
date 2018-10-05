@@ -9,6 +9,10 @@ namespace MySalesApp.Data.Dal
     {
         public string DBPath { get; set; }
 
+        /// <summary>
+        /// Load.
+        /// </summary>
+        /// <param name="builder"></param>
         protected override void Load(ContainerBuilder builder)
         {
             var db = new LiteDatabase(DBPath);
